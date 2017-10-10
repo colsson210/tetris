@@ -2,7 +2,6 @@ const child_process = require('child_process');
 const fs = require('fs-extra');
 const path = require('path');
 const tetrisAnimationCreator = require('./tetrisAnimationCreator.js');
-const tetrisImageGenerator = require('./tetrisImageGenerator.js');
 const tetrisHistoryWriter = require('./tetrisHistoryWriter.js');
 
 module.exports = {

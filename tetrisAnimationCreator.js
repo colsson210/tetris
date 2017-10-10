@@ -1,15 +1,16 @@
 const child_process = require('child_process');
 const fs = require('fs-extra');
 
-const tetrisImageGenerator = require('./tetrisImageGenerator.js');
+const tetrisSVGCreator = require('./tetrisSVGCreator.js');
 
 module.exports = {
   createAnimation(scriptFilename, animationDirectory, backgroundFilename, gifFilename, history, keepAnimationImages) {
     return fs.emptyDir(animationDirectory)
     .then(() => {
-      const createImageOfState = ({ board, position, figure }, index) => {
-        const imageOfStateFilename = `${animationDirectory}/${index}.png`;
-        return tetrisImageGenerator.drawTetris(backgroundFilename, imageOfStateFilename, board, position, figure, index);
+      const createImageOfState = ({ board, position: figurePosition, figure }, index) => {
+        const imageOfStateFilename = `${animationDirectory}/${index}.svg`;
+        const SVGString = tetrisSVGCreator.createSVGString(board, figurePosition, figure, index);
+        return fs.outputFile(imageOfStateFilename, SVGString);
       };
       return Promise.all(history.map(createImageOfState));
     })

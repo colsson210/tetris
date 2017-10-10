@@ -14,5 +14,5 @@ const getNextFigure = (() => {
   };
 })();
 const history = tetrisRunner.runTetris(getNextFigure, strategy.getMove, maxNumberOfStates);
-const keepAnimationImages = false;
+const keepAnimationImages = true;
 tetrisRunnerOutputWriter.writeOutput(history, keepAnimationImages);
