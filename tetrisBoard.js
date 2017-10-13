@@ -1,8 +1,8 @@
 module.exports = {
-  getEmptyBoard() {
+  getEmptyBoard(width, height) {
     return Array.from(
-      new Array(this.getDefaultHeight()),
-      _ => Array.from(new Array(this.getDefaultWidth()), _ => false));
+      new Array(height),
+      _ => Array.from(new Array(width), _ => false));
   },
   getDefaultHeight() {
     return 20;
@@ -20,7 +20,7 @@ module.exports = {
     const boardHeight = this.getHeight(board);
     for (let row = boardHeight - 1; row >= 0; row--) {
       if (board[row].includes(true)) {
-        return row;
+        return row + 1;
       }
     }
     return 0;

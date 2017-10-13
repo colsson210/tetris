@@ -17,7 +17,7 @@ module.exports = {
     const cellStrokeWidth = parseInt(0.1 * cellSideLength, 10);
     const offset = cellSideLength * 2;
 
-    const createRect = ({ x, y, width, height, color, strokeWidth }) => (
+    const createSVGRect = ({ x, y, width, height, color, strokeWidth }) => (
       `<rect x="${x}" y="${y}" width="${width}" height="${height}" fill="${color}" stroke-width="${strokeWidth}" stroke="pink" stroke-opacity="1.0"/>`
     );
     const boardHeight = tetrisBoard.getHeight(board);
@@ -26,7 +26,7 @@ module.exports = {
     const maxX = offset + cellSideLength * boardWidth;
     const backgroundRectHeight = (2 * offset) + (cellSideLength * boardHeight);
     const backgroundRectWidth = (2 * offset) + (cellSideLength * boardWidth);
-    const backgroundRect = createRect({
+    const backgroundRect = createSVGRect({
       x: 0,
       y: 0,
       width: backgroundRectWidth,
@@ -38,12 +38,21 @@ module.exports = {
     rects.push(backgroundRect);
     for (let row = 0; row < boardHeight; row++) {
       for (let column = 0; column < boardWidth; column++) {
-        const color = (figure && movement.isInFigure(figurePosition, figure, row, column))
-        ? figureColor
-        : (board[row][column] ? blockColor : backgroundColor);
+        const cellIsInFigure = (figure
+          && movement.isInFigure(figurePosition, figure, row, column));
+        const color = cellIsInFigure
+          ? figureColor
+          : (board[row][column] ? blockColor : backgroundColor);
         const x = offset + column * cellSideLength;
         const y = maxY - (row * cellSideLength);
-        rects.push(createRect({ x, y, color, width: cellSideLength, height: cellSideLength, strokeWidth: cellStrokeWidth }));
+        rects.push(createSVGRect({
+          x,
+          y,
+          color,
+          height: cellSideLength,
+          strokeWidth: cellStrokeWidth,
+          width: cellSideLength,
+        }));
       }
     }
     return fillSVGTemplate(rects.join('\n'));

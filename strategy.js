@@ -13,8 +13,7 @@ module.exports = {
       currentFigure = tetrisFigure.rotate90DegreesClockwise(currentFigure);
     }
     let lowestMaxHeight = 20;
-    let bestFigure;
-    let bestPosition;
+    let bestMove;
     for (let rotatedFiguresIndex = 0; rotatedFiguresIndex < rotatedFigures.length; rotatedFiguresIndex++) {
       const rotatedFigure = rotatedFigures[rotatedFiguresIndex];
       const figureHeight = tetrisFigure.getHeight(rotatedFigure);
@@ -27,11 +26,10 @@ module.exports = {
         const maxHeight = tetrisBoard.getMaxHeight(droppedFigureBoard);
         if (maxHeight < lowestMaxHeight) {
           lowestMaxHeight = maxHeight;
-          bestFigure = rotatedFigure;
-          bestPosition = currentPosition;
+          bestMove = { figure: rotatedFigure, position: currentPosition };
         }
       }
     }
-    return { figure: bestFigure, position: bestPosition };
+    return bestMove;
   },
 };

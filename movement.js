@@ -21,9 +21,9 @@ module.exports = {
     return isInFigureBox && figure[figureY][figureX];
   },
   clearFilledRows(board) {
-    const boardHeight = tetrisBoard.getHeight(board);
     const boardWidth = tetrisBoard.getWidth(board);
-    const nextBoard = tetrisBoard.getEmptyBoard();
+    const boardHeight = tetrisBoard.getHeight(board);
+    const nextBoard = tetrisBoard.getEmptyBoard(boardWidth, boardHeight);
     let row = 0;
     let nextBoardRow = 0;
     const isFilledRow = boardRow => !boardRow.includes(false);
@@ -42,7 +42,7 @@ module.exports = {
     const boardWidth = tetrisBoard.getWidth(board);
     const figureHeight = tetrisFigure.getHeight(figure);
     const figureWidth = tetrisFigure.getWidth(figure);
-    const nextBoard = tetrisBoard.getEmptyBoard();
+    const nextBoard = tetrisBoard.getEmptyBoard(boardWidth, boardHeight);
     for (let row = 0; row < boardHeight; row++) {
       for (let column = 0; column < boardWidth; column++) {
         const figureX = column - position.x;
@@ -67,7 +67,7 @@ module.exports = {
     const maxX = tetrisBoard.getWidth(board) - figureWidth;
     const y = tetrisBoard.getHeight(board) - figureHeight;
     let x = 0;
-    while (x < maxX && !this.isValidFigurePosition(board, { x, y }, figure)) {
+    while (x <= maxX && !this.isValidFigurePosition(board, { x, y }, figure)) {
       x += 1;
     }
     return x < maxX;
