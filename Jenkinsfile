@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'date'
+        sh 'cp --recursive /home/christian/Development/tetris/node_modules .'
       }
     }
     stage('Test') {
