@@ -1,2 +1,2 @@
 #!/bin/sh
-diff --recursive `$1 $2`
+diff --ignore-trailing-space --recursive $1 $2

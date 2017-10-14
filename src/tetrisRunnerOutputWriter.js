@@ -6,8 +6,8 @@ const tetrisHistoryWriter = require('./tetrisHistoryWriter.js');
 
 module.exports = {
   writeOutput(history) {
-    const tetrisSrcDirectory = path.dirname(__filename);
-    const tetrisDirectory = path.join(tetrisSrcDirectory)
+    const tetrisSrcDirectory = __dirname;
+    const tetrisDirectory = path.dirname(tetrisSrcDirectory);
     const outputDirectory = `${tetrisDirectory}/tetrisOutput`;
     const historyFilename = `${outputDirectory}/history.txt`;
     const createGIFScriptFilename = `${tetrisSrcDirectory}/createGif.sh`;

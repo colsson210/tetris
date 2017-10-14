@@ -7,10 +7,14 @@ pipeline {
       }
     }
     stage('Test') {
-      sh './endToEndTest/compareTetrisOutput.sh ./tetrisOutput ./endToEndTest/tetrisOutputGoldenReference'
+      steps {
+        sh 'npm run exampleRunAndEndToEndTest'
+      }
     }
     stage('Deploy') {
-      echo 'Deploying...'
+      steps {
+        echo 'Deploying...'
+      }
     }
   }
 }
