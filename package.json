@@ -4,7 +4,8 @@
   "description": "",
   "main": "tetris.js",
   "scripts": {
-    "test": "tap *Test.js --coverage --coverage-report=html --no-browser --100"
+    "test": "tap ./src/*Test.js --coverage --coverage-report=html --no-browser --100",
+    "endToEndTest": "./endToEndTest/compareTetrisOutput.sh ./tetrisOutput ./endToEndTest/tetrisOutputGoldenReference"
   },
   "author": "",
   "license": "ISC",

@@ -1,4 +1,8 @@
-.nyc_output
-coverage
-node_modules
-tetrisOutput
+/.gradle
+/.nyc_output
+/coverage
+/gradle
+/gradlew
+/gradlew.bat
+/node_modules
+/tetrisOutput

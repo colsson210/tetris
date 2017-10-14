@@ -1,0 +1,11 @@
+description = 'Gradle build for tetris'
+version = '1.0'
+
+task zip(type: Zip) {
+  from 'src'
+}
+
+task copy(type: Copy) {
+  from 'src'
+  into 'dest'
+}
