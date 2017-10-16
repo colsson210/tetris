@@ -9,7 +9,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'npm run exampleRunAndEndToEndTest'
+        sh 'npm run endToEndTest'
       }
     }
     stage('Deploy') {

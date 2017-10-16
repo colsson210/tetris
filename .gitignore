@@ -1,5 +1,6 @@
 /.gradle
 /.nyc_output
+/build
 /coverage
 /gradle
 /gradlew

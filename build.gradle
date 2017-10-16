@@ -1,3 +1,7 @@
+plugins {
+    id 'base'
+}
+
 description = 'Gradle build for tetris'
 version = '1.0'
 

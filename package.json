@@ -5,9 +5,8 @@
   "main": "tetris.js",
   "scripts": {
     "test": "tap ./src/*Test.js --coverage --coverage-report=html --no-browser --100",
-    "endToEndTest": "./endToEndTest/compareTetrisOutput.sh ./tetrisOutput ./endToEndTest/tetrisOutputGoldenReference",
+    "endToEndTest": "npm run exampleRun && ./endToEndTest/compareTetrisOutput.sh ./tetrisOutput ./endToEndTest/tetrisOutputGoldenReference",
     "exampleRun": "node ./src/tetrisExampleRun.js",
-    "exampleRunAndEndToEndTest": "npm run exampleRun && npm run endToEndTest"
   },
   "author": "",
   "license": "ISC",
