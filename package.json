@@ -6,7 +6,7 @@
   "scripts": {
     "test": "tap ./src/*Test.js --coverage --coverage-report=html --no-browser --100",
     "endToEndTest": "npm run exampleRun && ./endToEndTest/compareTetrisOutput.sh ./tetrisOutput ./endToEndTest/tetrisOutputGoldenReference",
-    "exampleRun": "node ./src/tetrisExampleRun.js",
+    "exampleRun": "node ./src/tetrisExampleRun.js"
   },
   "author": "",
   "license": "ISC",
