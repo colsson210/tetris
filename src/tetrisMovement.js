@@ -23,7 +23,7 @@ module.exports = {
   clearFilledRows(board) {
     const boardWidth = tetrisBoard.getWidth(board);
     const boardHeight = tetrisBoard.getHeight(board);
-    const nextBoard = tetrisBoard.getEmptyBoard(boardWidth, boardHeight);
+    const nextBoard = tetrisBoard.getEmptyBoard({ width: boardWidth, height: boardHeight });
     let row = 0;
     let nextBoardRow = 0;
     const isFilledRow = boardRow => !boardRow.includes(false);
@@ -42,7 +42,7 @@ module.exports = {
     const boardWidth = tetrisBoard.getWidth(board);
     const figureHeight = tetrisFigure.getHeight(figure);
     const figureWidth = tetrisFigure.getWidth(figure);
-    const nextBoard = tetrisBoard.getEmptyBoard(boardWidth, boardHeight);
+    const nextBoard = tetrisBoard.getEmptyBoard({ width: boardWidth, height: boardHeight });
     for (let row = 0; row < boardHeight; row++) {
       for (let column = 0; column < boardWidth; column++) {
         const figureX = column - position.x;

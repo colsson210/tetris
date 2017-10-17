@@ -1,4 +1,4 @@
-const movement = require('./movement.js');
+const tetrisMovement = require('./tetrisMovement.js');
 const tetrisBoard = require('./tetrisBoard.js');
 
 module.exports = {
@@ -39,7 +39,7 @@ module.exports = {
     for (let row = 0; row < boardHeight; row++) {
       for (let column = 0; column < boardWidth; column++) {
         const cellIsInFigure = (figure
-          && movement.isInFigure(figurePosition, figure, row, column));
+          && tetrisMovement.isInFigure(figurePosition, figure, row, column));
         const color = cellIsInFigure
           ? figureColor
           : (board[row][column] ? blockColor : backgroundColor);

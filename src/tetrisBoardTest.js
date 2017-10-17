@@ -2,7 +2,7 @@ const tap = require('tap');
 const tetrisBoard = require('./tetrisBoard.js');
 
 const boardMaxHeight1 = [[true]];
-const emptyBoard = tetrisBoard.getEmptyBoard(1, 1);
+const emptyBoard = tetrisBoard.getEmptyBoard({ width: 1, height: 1 });
 
 const expectedEmptyBoard = [[false]];
 tap.same(emptyBoard, expectedEmptyBoard);

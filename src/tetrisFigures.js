@@ -1,9 +1,9 @@
 module.exports = {
-  i: [[true], [true], [true], [true]],
-  j: [[true, true], [false, true], [false, true]],
-  l: [[true, false], [true, false], [true, true]],
+  i: [[true, true, true, true]],
+  j: [[false, false, true], [true, true, true]],
+  l: [[true, false, false], [true, true, true]],
   o: [[true, true], [true, true]],
-  s: [[false, true], [true, true], [true, false]],
+  s: [[true, true, false], [false, true, true]],
   t: [[false, true, false], [true, true, true]],
-  z: [[true, false], [true, true], [false, true]],
+  z: [[false, true, true], [true, true, false]],
 };

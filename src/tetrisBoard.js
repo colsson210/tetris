@@ -1,5 +1,5 @@
 module.exports = {
-  getEmptyBoard(width, height) {
+  getEmptyBoard({ width, height }) {
     return Array.from(
       new Array(height),
       _ => Array.from(new Array(width), _ => false));

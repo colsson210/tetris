@@ -1,5 +1,5 @@
 const tetrisBoard = require('./tetrisBoard.js');
-const movement = require('./movement.js');
+const tetrisMovement = require('./tetrisMovement.js');
 
 module.exports = {
   getString(board, figurePosition = false, figure = false) {
@@ -10,7 +10,7 @@ module.exports = {
       const line = [];
       for (let column = 0; column < boardWidth; column++) {
         line.push(
-          (figure && movement.isInFigure(figurePosition, figure, row, column))
+          (figure && tetrisMovement.isInFigure(figurePosition, figure, row, column))
             ? '*'
             : (board[row][column] ? 'x' : '.')
         );

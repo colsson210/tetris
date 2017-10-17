@@ -1,4 +1,4 @@
-const movement = require('./movement.js');
+const tetrisMovement = require('./tetrisMovement.js');
 const tetrisFigure = require('./tetrisFigure.js');
 const tetrisBoard = require('./tetrisBoard.js');
 
@@ -22,7 +22,7 @@ module.exports = {
       const y = boardHeight - figureHeight;
       for (let x = 0; x <= maxX; x++) {
         const currentPosition = { x, y };
-        const droppedFigureBoard = movement.getDroppedFigureBoard(board, currentPosition, rotatedFigure);
+        const droppedFigureBoard = tetrisMovement.getDroppedFigureBoard(board, currentPosition, rotatedFigure);
         const maxHeight = tetrisBoard.getMaxHeight(droppedFigureBoard);
         if (maxHeight < lowestMaxHeight) {
           lowestMaxHeight = maxHeight;

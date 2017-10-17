@@ -14,8 +14,8 @@ module.exports = {
     const numberOfRowsInFigure = figure.length;
     const numberOfColumnsInFigure = figure[0].length;
     const figureRotated90DegreesClockwise = [];
-    for (let columnNumber = 0; columnNumber < numberOfColumnsInFigure; columnNumber++) {
-      figureRotated90DegreesClockwise.push(getColumn(figure, columnNumber).reverse());
+    for (let columnNumber = (numberOfColumnsInFigure - 1); columnNumber >= 0; columnNumber--) {
+      figureRotated90DegreesClockwise.push(getColumn(figure, columnNumber));
     }
     return figureRotated90DegreesClockwise;
   },
@@ -23,8 +23,8 @@ module.exports = {
     const numberOfColumnsInFigure = figure[0].length;
     const figureRotated90DegreesCounterClockwise = [];
     for (let columnNumber = (numberOfColumnsInFigure - 1); columnNumber >= 0; columnNumber--) {
-      figureRotated90DegreesCounterClockwise.push(getColumn(figure, columnNumber));
+      figureRotated90DegreesCounterClockwise.push(getColumn(figure, columnNumber).reverse());
     }
-    return figureRotated90DegreesCounterClockwise;
+    return figureRotated90DegreesCounterClockwise.reverse();
   },
 };
