@@ -39,7 +39,7 @@ module.exports = {
     for (let row = 0; row < boardHeight; row++) {
       for (let column = 0; column < boardWidth; column++) {
         const cellIsInFigure = (figure
-          && tetrisMovement.isInFigure(figurePosition, figure, row, column));
+          && tetrisMovement.isInFigure(figurePosition, figure, { x: column, y: row }));
         const color = cellIsInFigure
           ? figureColor
           : (board[row][column] ? blockColor : backgroundColor);

@@ -1,4 +1,4 @@
-const strategy = require('./strategy.js');
+const tetrisStrategy = require('./tetrisStrategy.js');
 const tetrisFigures = require('./tetrisFigures.js');
 const tetrisRunner = require('./tetrisRunner.js');
 const tetrisRunnerOutputWriter = require('./tetrisRunnerOutputWriter.js');
@@ -13,5 +13,5 @@ const getNextFigure = (() => {
     return figure;
   };
 })();
-const history = tetrisRunner.runTetris(getNextFigure, strategy.getMove, maxNumberOfStates);
+const history = tetrisRunner.runTetris(getNextFigure, tetrisStrategy.getMove, maxNumberOfStates);
 tetrisRunnerOutputWriter.writeOutput(history);

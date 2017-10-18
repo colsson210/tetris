@@ -10,7 +10,7 @@ module.exports = {
       const line = [];
       for (let column = 0; column < boardWidth; column++) {
         line.push(
-          (figure && tetrisMovement.isInFigure(figurePosition, figure, row, column))
+          (figure && tetrisMovement.isInFigure(figurePosition, figure, { x: column, y: row }))
             ? '*'
             : (board[row][column] ? 'x' : '.')
         );

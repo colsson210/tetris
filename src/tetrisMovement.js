@@ -9,11 +9,11 @@ module.exports = {
     }
     return this.addFigureToBoard(board, localPosition, figure);
   },
-  isInFigure(figurePosition, figure, row, column) {
+  isInFigure(figurePosition, figure, { x, y }) {
     const figureHeight = tetrisFigure.getHeight(figure);
     const figureWidth = tetrisFigure.getWidth(figure);
-    const figureX = column - figurePosition.x;
-    const figureY = row - figurePosition.y;
+    const figureX = x - figurePosition.x;
+    const figureY = y - figurePosition.y;
     const isInFigureBox = figureY >= 0
       && figureY < figureHeight
       && figureX >= 0
@@ -72,7 +72,7 @@ module.exports = {
     }
     return x < maxX;
   },
-  isFigureOverlappingBoard(board, position, figure) {
+  isFigureOverlappingBoardFilledSlots(board, position, figure) {
     const figureHeight = tetrisFigure.getHeight(figure);
     const figureWidth = tetrisFigure.getWidth(figure);
     for (let figureY = 0; figureY < figureHeight; figureY++) {
@@ -95,7 +95,7 @@ module.exports = {
       && (figurePosition.x + figureWidth) <= boardWidth
       && figurePosition.y >= 0
       && (figurePosition.y + figureHeight) <= boardHeight
-      && !this.isFigureOverlappingBoard(board, figurePosition, figure);
+      && !this.isFigureOverlappingBoardFilledSlots(board, figurePosition, figure);
   },
   canMoveDown(board, position, figure) {
     return this.isValidFigurePosition(board, this.moveDown(position), figure);

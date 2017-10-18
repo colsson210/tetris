@@ -14,7 +14,7 @@ module.exports = {
     }
     return Object.assign({}, tetrisMovement.addFigureToTop(nextBoard, nextFigure), { done: false, isNewFigure: true });
   },
-  getInitialState(getNextFigure, boardWidth, boardHeight) {
+  getInitialState(getNextFigure, { boardWidth, boardHeight }) {
     return Object.assign(
       {},
       tetrisMovement.addFigureToTop(tetrisBoard.getEmptyBoard({ width: boardWidth, height: boardHeight }), getNextFigure()),
