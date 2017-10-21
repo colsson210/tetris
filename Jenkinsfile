@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh './gradlew copyNodeModules'
+        sh './gradlew dockerBuild'
       }
     }
     stage('Test') {
       steps {
-        sh 'npm test'
-        sh 'npm run endToEndTest'
+        sh './gradlew dockerRunTest' = npm test
+        sh './gradlew dockerRunEndToEndTest' = npm run endToEndTest
       }
     }
     stage('Deploy') {

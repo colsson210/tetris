@@ -1,16 +1,43 @@
-plugins {
-    id 'base'
+ext {
+    dockerImageName = "colsson210/$name"
+    dockerTag = version
 }
 
-description = 'Gradle build for tetris'
-version = '1.0'
-
-task deploy(type: Zip) {
-  from 'src'
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
 }
 
-task copyNodeModules(type: Copy) {
-  String nodeModulesPath = new File('./node_modules_absolute_path.txt').getText('UTF-8').trim()
-  from fileTree(nodeModulesPath)
-  into 'node_modules'
+task dockerRunTest(type: Exec) {
+    group 'Docker'
+    description "Run the tetris example"
+    commandLine 'docker'
+    args = ['run', '--rm', '--name' 'tetris', "$dockerImageName" 'npm', 'test']
+}
+
+task dockerStop(type: Exec) {
+    group 'Docker'
+    description 'Stop the jenkins docker container'
+    commandLine 'docker'
+    args = ['rm', '-f', '-v', 'tetris']
+}
+
+task dockerStatus(type: Exec) {
+    group 'Docker'
+    description 'Display the process status of jenkins docker container'
+    commandLine 'docker'
+    args = ['ps', '-a', '-f', "name=tetris"]
+}
+
+task dockerBuild(type: Exec) {
+    group 'Docker'
+    description "Build the docker image, tag as current version and 'as latest'."
+    commandLine 'docker'
+    args = ['build', '-t', "$dockerImageName:$dockerTag", '-t', "$dockerImageName:latest", "."]
+}
+
+task dockerPush(type: Exec) {
+    group 'Docker'
+    description 'Push the docker image with the current tag'
+    commandLine 'docker'
+    args = ['push', "$dockerImageName:$dockerTag"]
 }

@@ -3,7 +3,5 @@
 /build
 /coverage
 /gradle
-/gradlew
-/gradlew.bat
 /node_modules
 /tetrisOutput
