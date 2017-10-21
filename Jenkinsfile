@@ -1,20 +1,20 @@
 pipeline {
-  agent any
+  agent { dockerfile true }
   stages {
     stage('Build') {
       steps {
-        sh 'date'
-        sh 'cp --recursive /home/christian/Development/tetris/node_modules .'
+        sh './gradlew copyNodeModules'
       }
     }
     stage('Test') {
       steps {
+        sh 'npm test'
         sh 'npm run endToEndTest'
       }
     }
     stage('Deploy') {
       steps {
-        echo 'Deploying...'
+        sh './gradlew deploy'
       }
     }
   }

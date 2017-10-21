@@ -5,11 +5,12 @@ plugins {
 description = 'Gradle build for tetris'
 version = '1.0'
 
-task zip(type: Zip) {
+task deploy(type: Zip) {
   from 'src'
 }
 
-task copy(type: Copy) {
-  from 'src'
-  into 'dest'
+task copyNodeModules(type: Copy) {
+  String nodeModulesPath = new File('./node_modules_absolute_path.txt').getText('UTF-8').trim()
+  from fileTree(nodeModulesPath)
+  into 'node_modules'
 }
