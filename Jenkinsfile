@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh './gradlew dockerBuild'
+        sh 'docker build -t abc:1 .'
       }
     }
     stage('Test') {
       steps {
-        sh './gradlew dockerRunTest'
+        sh 'docker run --rm --name tetris abc:1 npm test'
       }
     }
     stage('Deploy') {
