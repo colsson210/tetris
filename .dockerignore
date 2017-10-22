@@ -1,0 +1,7 @@
+*
+!/endToEndTest
+!/src
+!/build.gradle
+!/gradlew
+!/gradlew.bat
+!/package.json

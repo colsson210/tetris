@@ -8,13 +8,12 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh './gradlew dockerRunTest' = npm test
-        sh './gradlew dockerRunEndToEndTest' = npm run endToEndTest
+        sh './gradlew dockerRunTest'
       }
     }
     stage('Deploy') {
       steps {
-        sh './gradlew deploy'
+        sh 'echo "deploy"'
       }
     }
   }

@@ -9,9 +9,16 @@ task wrapper(type: Wrapper) {
 
 task dockerRunTest(type: Exec) {
     group 'Docker'
-    description "Run the tetris example"
+    description "Run the tetris unit tests"
     commandLine 'docker'
-    args = ['run', '--rm', '--name' 'tetris', "$dockerImageName" 'npm', 'test']
+    args = ['run', '--rm', '--name', 'tetris', "$dockerImageName", 'npm', 'test']
+}
+
+task dockerEndToEndRunTest(type: Exec) {
+    group 'Docker'
+    description "Run the tetris end to end test"
+    commandLine 'docker'
+    args = ['run', '--rm', '--name', 'tetris', "$dockerImageName", 'npm', 'run', 'endToEndTest']
 }
 
 task dockerStop(type: Exec) {
